@@ -7,3 +7,35 @@
     text-align: center;
 }
 
+#button-line-1 {
+  text-align: center;
+}
+
+.btn {
+  --color1: white;
+  --color2: #008000;
+  background-color: var(--color2); /* Button color */
+  font-size: 20px; /* Makes the text and its button bigger */
+  border: 2px solid var(--color2); /* Since the color is the same as the background, once it is the other color, it is visible */
+  color: var(--color1); /* Text color */
+  padding: 14px 32px; /* Makes gap between the text and the end of the button bigger */
+  text-align: center; /* Makes sure the text is in the middle of the button */
+  display: inline-block;
+  transition-duration: 0.2s; /* Default transition (when it goes from being hovered to not being hovered) */
+  border-radius: 8px;
+  text-decoration: none; /* Since the button is almost likely a link, we don't want an underline. */
+}
+
+.btn:hover {
+  transition-duration: 0.6s;
+  background-color: var(--color1);
+  color: var(--color2);
+}
+
+.btn:focus {
+  outline: none; /* Removes ugly blue outline when clicked */
+}
+
+.btn:visited {
+  text-decoration: none;
+}
