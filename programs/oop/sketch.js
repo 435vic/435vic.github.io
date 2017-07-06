@@ -1,7 +1,8 @@
 var bubbles = [];
 
 function setup() {
-  createCanvas(600, 400);
+  var canvas = createCanvas(600, 400);
+  canvas.parent('sketch-holder');
   background(0);
 }
 
