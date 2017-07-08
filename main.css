@@ -14,7 +14,7 @@
 
 .btn {
   --color1: white;
-  --color2: #008000;
+  --color2: #0b2aad;
   background-color: var(--color2); /* Button color */
   font-size: 20px; /* Makes the text and its button bigger */
   border: 2px solid var(--color2); /* Since the color is the same as the background, once it is the other color, it is visible */
