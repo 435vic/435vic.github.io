@@ -1,5 +1,6 @@
-* {
+*:link {
     font-family: 'Noto Sans', 'Source Sans Pro', sans-serif;
+    text-decoration: none;
 }
 
 #title {
