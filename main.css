@@ -25,6 +25,8 @@
   transition-duration: 0.2s; /* Default transition (when it goes from being hovered to not being hovered) */
   border-radius: 8px;
   text-decoration: none; /* Since the button is almost likely a link, we don't want an underline. */
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .btn:hover {
