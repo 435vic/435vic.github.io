@@ -5,13 +5,19 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "pnpm run wasm && astro check && astro build",
+    "wasm": "pnpm run wasm-build && pnpm run wasm-link",
+    "wasm-build": "wasm-pack build rustbik --out-dir dist",
+    "wasm-link": "pnpm link ./rustbik/dist",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.8.3",
     "@astrojs/check": "^0.6.0",
-    "typescript": "^5.4.5"
+    "astro": "^4.8.3",
+    "typescript": "^5.4.5",
+    "vite-plugin-top-level-await": "^1.4.1",
+    "vite-plugin-wasm": "^3.3.0",
+    "wasm-pack": "^0.12.1"
   }
 }
