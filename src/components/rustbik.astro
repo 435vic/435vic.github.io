@@ -4,7 +4,14 @@
     import * as rustbik from "rustbik";
 
     const canvas = document.querySelector<HTMLCanvasElement>("canvas#rustbik")!;
-    rustbik.bind(canvas, {
-        premultipliedAlpha: false,
-    });
+
+    try {
+        rustbik.bind(canvas, {
+            premultipliedAlpha: false,
+            alpha: true,
+            failIfMajorPerformanceCaveat: true,
+        });
+    } catch (e) {
+        console.error("failed to load: ", e);
+    }
 </script>
