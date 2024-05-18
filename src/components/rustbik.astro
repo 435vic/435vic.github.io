@@ -4,5 +4,7 @@
     import * as rustbik from "rustbik";
 
     const canvas = document.querySelector<HTMLCanvasElement>("canvas#rustbik")!;
-    rustbik.bind(canvas);
+    rustbik.bind(canvas, {
+        premultipliedAlpha: false,
+    });
 </script>
