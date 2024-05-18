@@ -1,5 +1,10 @@
+<canvas id="rustbik" width=400 height=400></canvas>
+
 <script>
     import * as rustbik from "rustbik";
 
-    console.log(rustbik.greet("Victor"));
+    const canvas = document.querySelector<HTMLCanvasElement>("canvas#rustbik")!;
+    rustbik.bind(canvas, {
+        premultipliedAlpha: false,
+    });
 </script>
