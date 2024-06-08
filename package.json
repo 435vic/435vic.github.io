@@ -3,10 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "pnpm run wasm && astro dev",
+    "dev": "concurrently \"pnpm run wasm-watch\" \"astro dev\"",
     "start": "astro dev",
     "build": "pnpm run wasm && astro check && astro build",
     "wasm": "pnpm run wasm-build && pnpm run wasm-link",
+    "wasm-watch": "cd rustbik && cargo watch -s \"pnpm wasm-build\"",
     "wasm-build": "wasm-pack build rustbik --out-dir dist",
     "wasm-link": "pnpm link ./rustbik/dist",
     "preview": "astro preview",
@@ -19,5 +20,8 @@
     "vite-plugin-top-level-await": "^1.4.1",
     "vite-plugin-wasm": "^3.3.0",
     "wasm-pack": "^0.12.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
