@@ -5,11 +5,21 @@ import Rustbik from '../components/rustbik.astro';
 
 <Page>
 	<main>
-		<div>
-			<h1>Undergoing Renovations</h1>
-			<p class="description">This site isn't done yet. Have a lil treat while you wait :D</p>
+		<section class="full">
+			<div class="container">
+				<div class="headerline">
+					<h1>Hello! My name is <span class="highlight">Victor</span>.<br>I like to code stuff.</h1>
+				</div>
+			</div>
 			<Rustbik/>
-		</div>
+		</section>
+		<section class="medium">
+			<p>
+				I've been coding as a hobby for almost 8 years now. <br>
+				In that time, I've picked up knowledge in several <br>
+				<span class="highlight">programming languages</span>, <span class="highlight">frameworks</span> and <span class="highlight">tools</span>. <br>
+			</p>
+		</section>
 	</main>
 </Page>
 
@@ -24,21 +34,78 @@ import Rustbik from '../components/rustbik.astro';
 		--font-mono: 'IBM Plex Mono', ui-monospace, Monaco, monospace;
 	}
 
-	body {
-		background: var(--background);
-		color: var(--text);
-		font-family: Lexend, sans-serif;
-	}
-
-	main {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 100vh;
-		text-align: center;
+	.highlight {
+		color: var(--accent);
 	}
 
 	.description {
 		font-family: var(--font-mono);
+	}
+
+	.container {
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	@media (min-width: 640px) {
+		.container {
+			max-width: 640px;
+		}
+	}
+
+	@media (min-width: 768px) {
+		.container {
+			max-width: 768px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.container {
+			max-width: 1024px;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.container {
+			max-width: 1280px;
+		}
+	}
+
+	@media (min-width: 1536px) {
+		.container {
+			max-width: 1536px;
+		}
+	}
+
+	.headerline {
+		width: 50%;
+		font-family: var(--font-headline);
+		font-size: 2.4rem;
+		/* line-height: 2rem; */
+	}
+
+	section.full {
+		min-height: 100vh;
+		display: flex;
+		place-items: center;
+	}
+
+	section.medium {
+		min-height: 40vh;
+	}
+	
+	p {
+		font-size: 1.5rem;
+	}
+
+	h1 {
+		padding: 0;
+		margin: 0;
+	}
+
+	body {
+		background: var(--background);
+		color: var(--text);
+		font-family: Lexend, sans-serif;
 	}
 </style>

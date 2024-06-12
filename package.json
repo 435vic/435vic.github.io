@@ -7,6 +7,7 @@
     "start": "astro dev",
     "build": "pnpm run wasm && astro check && astro build",
     "wasm": "pnpm run wasm-build && pnpm run wasm-link",
+    "wasm-watch": "pnpm nodemon -w rustbik -x \"wasm-pack build rustbik --out-dir dist -- --features debug\" -e rs,frag,toml --ignore dist --ignore target",
     "wasm-build": "wasm-pack build rustbik --out-dir dist",
     "wasm-link": "pnpm link ./rustbik/dist",
     "preview": "astro preview",
@@ -19,5 +20,9 @@
     "vite-plugin-top-level-await": "^1.4.1",
     "vite-plugin-wasm": "^3.3.0",
     "wasm-pack": "^0.12.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.3"
   }
 }

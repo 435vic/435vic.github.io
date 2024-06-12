@@ -1,12 +1,37 @@
-<canvas id="rustbik" width=400 height=400></canvas>
+<canvas id="rustbik"></canvas>
+
+<style>
+    canvas {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+</style>
 
 <script>
     import * as rustbik from "rustbik";
 
-    const canvas = document.querySelector<HTMLCanvasElement>("canvas#rustbik")!;
+    const rustbikCanvas = document.querySelector<HTMLCanvasElement>("canvas#rustbik")!;
+    rustbikCanvas.width = rustbikCanvas.clientWidth;
+    rustbikCanvas.height = rustbikCanvas.clientHeight;
+
+    const observer = new ResizeObserver((entries) => {
+        if (!entries.every(entry => 'devicePixelContentBoxSize' in entry)) return;
+        const entry = entries.find(entry => entry.target === rustbikCanvas)!;
+        rustbikCanvas.width = entry.devicePixelContentBoxSize[0]!.inlineSize;
+        rustbikCanvas.height = entry.devicePixelContentBoxSize[0]!.blockSize;
+        // Notify rustbik that the canvas size has changed
+        window.dispatchEvent(new CustomEvent("rustbik_resize", {
+            detail: entry
+        }));
+    });
+    observer.observe(rustbikCanvas, { box: 'device-pixel-content-box' })
 
     try {
-        rustbik.bind(canvas, {
+        rustbik.bind(rustbikCanvas, {
             premultipliedAlpha: false,
             alpha: true,
             failIfMajorPerformanceCaveat: true,
