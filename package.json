@@ -3,26 +3,22 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "pnpm run wasm && astro check && astro build",
-    "wasm": "pnpm run wasm-build && pnpm run wasm-link",
-    "wasm-watch": "pnpm nodemon -w rustbik -x \"wasm-pack build rustbik --out-dir dist -- --features debug\" -e rs,frag,toml --ignore dist --ignore target",
-    "wasm-build": "wasm-pack build rustbik --out-dir dist",
-    "wasm-link": "pnpm link ./rustbik/dist",
+    "dev": "concurrently -n RUSTBIK,ASTRO \"pnpm run dev:wasm\" \"astro dev\"",
     "preview": "astro preview",
-    "astro": "astro"
+    "build": "pnpm run wasm && astro check && astro build",
+    "dev:wasm": "cd rustbik && cargo watch -i dist -- wasm-pack build --out-dir dist -- --features debug",
+    "build:wasm": "wasm-pack build rustbik --out-dir dist && pnpm link ./rustbik/dist",
+    "link:wasm": "pnpm link ./rustbik/dist"
   },
   "dependencies": {
     "@astrojs/check": "^0.6.0",
-    "astro": "^4.8.3",
+    "astro": "^4.10.2",
     "typescript": "^5.4.5",
     "vite-plugin-top-level-await": "^1.4.1",
     "vite-plugin-wasm": "^3.3.0",
     "wasm-pack": "^0.12.1"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
-    "nodemon": "^3.1.3"
+    "concurrently": "^8.2.2"
   }
 }

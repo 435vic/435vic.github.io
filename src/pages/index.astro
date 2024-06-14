@@ -42,6 +42,23 @@ import Rustbik from '../components/rustbik.astro';
 		font-family: var(--font-mono);
 	}
 
+	.headerline {
+		font-family: var(--font-headline);
+		font-size: 1.5rem;
+		padding-left: 1rem;
+		padding-top: 10vh;
+		/* line-height: 2rem; */
+	}
+
+	@media (min-width: 640px) {
+		.headerline {
+			font-size: 2.4rem;
+			width: 50%;
+
+		}
+	}
+
+	/* === container stuff === */
 	.container {
 		margin: 0 auto;
 		width: 100%;
@@ -76,13 +93,7 @@ import Rustbik from '../components/rustbik.astro';
 			max-width: 1536px;
 		}
 	}
-
-	.headerline {
-		width: 50%;
-		font-family: var(--font-headline);
-		font-size: 2.4rem;
-		/* line-height: 2rem; */
-	}
+	/* === container stuff === */
 
 	section.full {
 		min-height: 100vh;

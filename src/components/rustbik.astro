@@ -7,7 +7,7 @@
         height: 100vh;
         top: 0;
         left: 0;
-        z-index: 1;
+        z-index: -1;
     }
 </style>
 
@@ -19,12 +19,19 @@
     rustbikCanvas.height = rustbikCanvas.clientHeight;
 
     const observer = new ResizeObserver((entries) => {
-        if (!entries.every(entry => 'devicePixelContentBoxSize' in entry)) return;
         const entry = entries.find(entry => entry.target === rustbikCanvas)!;
-        rustbikCanvas.width = entry.devicePixelContentBoxSize[0]!.inlineSize;
-        rustbikCanvas.height = entry.devicePixelContentBoxSize[0]!.blockSize;
+        if ('devicePixelContentBoxSize' in entry) {
+            rustbikCanvas.width = entry.devicePixelContentBoxSize[0]!.inlineSize;
+            rustbikCanvas.height = entry.devicePixelContentBoxSize[0]!.blockSize;
+        } else {
+            // @ts-ignore
+            rustbikCanvas.width = entry.contentRect.width * window.devicePixelRatio;
+            // @ts-ignore
+            rustbikCanvas.height = entry.contentRect.height * window.devicePixelRatio;
+        }
+        
         // Notify rustbik that the canvas size has changed
-        window.dispatchEvent(new CustomEvent("rustbik_resize", {
+        rustbikCanvas.dispatchEvent(new CustomEvent("observer_resize", {
             detail: entry
         }));
     });
