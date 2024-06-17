@@ -10,7 +10,10 @@ jobs:
   buildndeploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v4
+          with:
+            submodules: 'true'
       - name: Setup pnpm
         uses: pnpm/action-setup@v4.0.0
         with:
