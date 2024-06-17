@@ -4,21 +4,23 @@ import Rustbik from '../components/rustbik.astro';
 ---
 
 <Page>
-	<main>
+	<main style="position: relative;">
+		<Rustbik/>
 		<section class="full">
 			<div class="container">
 				<div class="headerline">
 					<h1>Hello! My name is <span class="highlight">Victor</span>.<br>I like to code stuff.</h1>
 				</div>
 			</div>
-			<Rustbik/>
 		</section>
 		<section class="medium">
-			<p>
-				I've been coding as a hobby for almost 8 years now. <br>
-				In that time, I've picked up knowledge in several <br>
-				<span class="highlight">programming languages</span>, <span class="highlight">frameworks</span> and <span class="highlight">tools</span>. <br>
-			</p>
+			<div class="programming-section over-rustbik">
+				<p>
+					I've been coding as a hobby for almost 8 years now. <br>
+					In that time, I've picked up knowledge in several <br>
+					<span class="highlight">programming languages</span>, <span class="highlight">frameworks</span> and <span class="highlight">tools</span>. <br>
+				</p>
+			</div>
 		</section>
 	</main>
 </Page>
@@ -27,11 +29,22 @@ import Rustbik from '../components/rustbik.astro';
 	:root {
 		--text: #ecf2f4;
 		--background: #090e0f;
-		--primary: #a0c3c8;
+		--background-light: #131617;
+		--primary: #a0c3c8
 		--secondary: #5c4171;
 		--accent: #ab6da8;
 		--font-headline: 'Lexend', sans-serif;
 		--font-mono: 'IBM Plex Mono', ui-monospace, Monaco, monospace;
+	}
+
+	.over-rustbik {
+		position: relative;
+		z-index: 2;
+	}
+
+	.programming-section {
+		margin: 0 2rem;
+		font-size: 0.8rem;
 	}
 
 	.highlight {
@@ -44,67 +57,30 @@ import Rustbik from '../components/rustbik.astro';
 
 	.headerline {
 		font-family: var(--font-headline);
-		font-size: 1.5rem;
-		padding-left: 1rem;
-		padding-top: 10vh;
-		/* line-height: 2rem; */
+		width: 20rem;
+		padding: 1rem;
+		font-size: 2.4rem;
+		margin-bottom: 4vh;
 	}
 
-	@media (min-width: 640px) {
-		.headerline {
-			font-size: 2.4rem;
-			width: 50%;
-
-		}
-	}
-
-	/* === container stuff === */
 	.container {
 		margin: 0 auto;
 		width: 100%;
 	}
 
-	@media (min-width: 640px) {
-		.container {
-			max-width: 640px;
-		}
-	}
-
-	@media (min-width: 768px) {
-		.container {
-			max-width: 768px;
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.container {
-			max-width: 1024px;
-		}
-	}
-
-	@media (min-width: 1280px) {
-		.container {
-			max-width: 1280px;
-		}
-	}
-
-	@media (min-width: 1536px) {
-		.container {
-			max-width: 1536px;
-		}
-	}
-	/* === container stuff === */
-
 	section.full {
 		min-height: 100vh;
 		display: flex;
-		place-items: center;
+		place-items: end;
 	}
 
 	section.medium {
-		min-height: 40vh;
+		min-height: 20rem;
+		display: flex;
+		place-items: center;
+		background: var(--background-light);
 	}
-	
+
 	p {
 		font-size: 1.5rem;
 	}
@@ -118,5 +94,49 @@ import Rustbik from '../components/rustbik.astro';
 		background: var(--background);
 		color: var(--text);
 		font-family: Lexend, sans-serif;
+	}
+
+	@media (min-width: 640px) {
+		.container {
+			max-width: 640px;
+		}
+
+		.headerline {
+			padding: 0;
+			margin: 0;
+			width: 50%;
+		}
+
+		section.full {
+			place-items: center;
+		}
+	}
+
+	@media (min-width: 768px) {
+		.container {
+			max-width: 768px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.container {
+			max-width: 1024px;
+		}
+
+		.programming-section {
+			margin-left: 4rem;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.container {
+			max-width: 1280px;
+		}
+	}
+
+	@media (min-width: 1536px) {
+		.container {
+			max-width: 1536px;
+		}
 	}
 </style>

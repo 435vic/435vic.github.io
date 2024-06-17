@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "concurrently -n RUSTBIK,ASTRO \"pnpm run dev:wasm\" \"astro dev\"",
     "preview": "astro preview",
-    "build": "pnpm run wasm && astro check && astro build",
+    "build": "pnpm run build:wasm && astro check && astro build",
+    "build:wasm": "pnpm run rustup && pnpm run build:rustbik && pnpm run link:rustbik",
     "dev:wasm": "cd rustbik && cargo watch -i dist -- wasm-pack build --out-dir dist -- --features debug",
-    "build:wasm": "wasm-pack build rustbik --out-dir dist && pnpm link ./rustbik/dist",
-    "link:wasm": "pnpm link ./rustbik/dist"
+    "rustup": "rustup update stable && rustup default stable",
+    "build:rustbik": "wasm-pack build rustbik --out-dir dist && pnpm link ./rustbik/dist",
+    "link:rustbik": "pnpm link ./rustbik/dist"
   },
   "dependencies": {
     "@astrojs/check": "^0.6.0",

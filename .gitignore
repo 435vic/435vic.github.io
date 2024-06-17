@@ -1,6 +1,5 @@
 # build output
 dist/
-rustbik-dist/
 
 # generated types
 .astro/
@@ -25,3 +24,4 @@ pnpm-debug.log*
 .idea/
 
 .direnv
+.vercel
