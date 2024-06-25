@@ -1,6 +1,7 @@
 ---
 import Page from '../layouts/Page.astro';
 import Rustbik from '../components/rustbik.astro';
+import Technologies from '../components/technologies.astro';
 ---
 
 <Page>
@@ -15,11 +16,12 @@ import Rustbik from '../components/rustbik.astro';
 		</section>
 		<section class="medium">
 			<div class="programming-section over-rustbik">
-				<p>
+				<p style="width: 50%">
 					I've been coding as a hobby for almost 8 years now. <br>
 					In that time, I've picked up knowledge in several <br>
 					<span class="highlight">programming languages</span>, <span class="highlight">frameworks</span> and <span class="highlight">tools</span>. <br>
 				</p>
+				<Technologies/>
 			</div>
 		</section>
 	</main>
@@ -44,6 +46,9 @@ import Rustbik from '../components/rustbik.astro';
 
 	.programming-section {
 		margin: 0 2rem;
+		width: 100%;
+		display: flex;
+		place-items: center;
 		font-size: 0.8rem;
 	}
 
@@ -124,7 +129,7 @@ import Rustbik from '../components/rustbik.astro';
 		}
 
 		.programming-section {
-			margin-left: 4rem;
+			margin: 0 10rem;
 		}
 	}
 

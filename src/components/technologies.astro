@@ -1,0 +1,49 @@
+
+<script>
+    const TECHNOLOGIES: [string, string][] = [
+        ['cpp', 'C++'],
+        ['python', 'Python'],
+        ['ts', 'Javascript/Typescript'],
+        ['rust', 'Rust'],
+        ['nodejs', 'NodeJS'],
+        ['react', 'React'],
+        ['linux', 'UNIX/Linux'],
+        ['docker', 'Docker'],
+        ['git', 'Git'],
+    ];
+
+    const techlist = document.querySelector('.techlist')!;
+
+    TECHNOLOGIES.forEach(([id, _name]) => {
+        const tech = document.createElement('div');
+        tech.classList.add('tech');
+        tech.id = id;
+        tech.style.backgroundImage = `url(/technologies/${id}.svg)`;
+        techlist.appendChild(tech);
+    });
+</script>
+
+<div class="techlist">
+</div>
+
+<style>
+    .techlist {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin: 0 auto;
+        flex-grow: 1;
+    }
+
+    .techlist :global(.tech) {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 0.5rem;
+        -webkit-backdrop-filter: blur(10px) saturate(180%);
+        backdrop-filter: blur(10px) saturate(180%);
+        background-color: rgba(85, 84, 90, 0.482);
+        background-size: 3rem;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
