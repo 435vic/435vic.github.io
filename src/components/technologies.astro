@@ -18,7 +18,7 @@
         const tech = document.createElement('div');
         tech.classList.add('tech');
         tech.id = id;
-        tech.style.backgroundImage = `url(/technologies/${id}.svg)`;
+        tech.style.backgroundImage = `url("/assets/technologies/${id}.svg")`;
         techlist.appendChild(tech);
     });
 </script>
@@ -33,6 +33,7 @@
         justify-content: center;
         margin: 0 auto;
         flex-grow: 1;
+        flex-wrap: wrap;
     }
 
     .techlist :global(.tech) {
@@ -45,5 +46,18 @@
         background-size: 3rem;
         background-repeat: no-repeat;
         background-position: center;
+        transition: transform 0.2s ease, margin 0.9s ease; 
+    }
+    
+    @media (min-width: 480px) {
+        .techlist {
+            flex-wrap: nowrap;
+        }
+
+        .techlist :global(.tech.active),
+        .techlist :global(.tech:hover) {
+            transform: scale(1.2);
+            margin: 0 1rem;
+        }
     }
 </style>

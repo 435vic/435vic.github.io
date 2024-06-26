@@ -16,7 +16,7 @@ import Technologies from '../components/technologies.astro';
 		</section>
 		<section class="medium">
 			<div class="programming-section over-rustbik">
-				<p style="width: 50%">
+				<p>
 					I've been coding as a hobby for almost 8 years now. <br>
 					In that time, I've picked up knowledge in several <br>
 					<span class="highlight">programming languages</span>, <span class="highlight">frameworks</span> and <span class="highlight">tools</span>. <br>
@@ -48,6 +48,7 @@ import Technologies from '../components/technologies.astro';
 		margin: 0 2rem;
 		width: 100%;
 		display: flex;
+		flex-direction: column;
 		place-items: center;
 		font-size: 0.8rem;
 	}
@@ -111,6 +112,15 @@ import Technologies from '../components/technologies.astro';
 			margin: 0;
 			width: 50%;
 		}
+	
+		.programming-section {
+			flex-direction: row;
+		}
+
+		.programming-section p {
+			width: 50%;
+			flex-shrink: 1;
+		}
 
 		section.full {
 			place-items: center;
@@ -129,7 +139,8 @@ import Technologies from '../components/technologies.astro';
 		}
 
 		.programming-section {
-			margin: 0 10rem;
+			margin-left: 8rem;
+			margin-right: 6rem;
 		}
 	}
 
