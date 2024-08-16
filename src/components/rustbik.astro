@@ -33,9 +33,11 @@
     rustbikCanvas.width = rustbikCanvas.clientWidth;
     rustbikCanvas.height = rustbikCanvas.clientHeight;
 
+    const pixelboxSupport = "devicePixelContentBoxSize" in ResizeObserverEntry.prototype;
+
     const observer = new ResizeObserver((entries) => {
         const entry = entries.find(entry => entry.target === rustbikCanvas)!;
-        if ('devicePixelContentBoxSize' in entry) {
+        if (pixelboxSupport) {
             rustbikCanvas.width = entry.devicePixelContentBoxSize[0]!.inlineSize;
             rustbikCanvas.height = entry.devicePixelContentBoxSize[0]!.blockSize;
         } else {
@@ -50,7 +52,8 @@
             detail: entry
         }));
     });
-    observer.observe(rustbikCanvas, { box: 'device-pixel-content-box' })
+    observer.observe(rustbikCanvas, { box: pixelboxSupport ? "device-pixel-content-box" : "border-box" });
+    console.log("HIHIHI2");
 
     overlay.addEventListener("contextmenu", (e) => {
         e.preventDefault();
@@ -78,6 +81,7 @@
     });
 
     try {
+        console.log("running rustbik...");
         rustbik.bind(rustbikCanvas, {
             premultipliedAlpha: false,
             alpha: true,
